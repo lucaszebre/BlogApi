@@ -7,8 +7,8 @@ Blog Post API built using **NODE JS** and **SQL**. It follows a **RESTFul** desi
 - Create a article 
 - Update a article
 - Delete a article
-- Auth as a admin / Logout as a admin 
-- Auth as a visitor / comment the post 
+- Auth as a admin / Logout as a admin super role , delete comment , modified article , delete article 
+- Auth as a visitor / comment the post , write article 
 
 ## API Endpoints
 
