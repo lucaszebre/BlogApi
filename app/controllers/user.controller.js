@@ -1,6 +1,5 @@
 const pool = require('../config/db.js')
 
-
 exports.getUserById = (req, res) => {
     const id = parseInt(req.params.userId)
     
