@@ -18,7 +18,7 @@ const connectionConfig = {
     host: 'localhost',
     database: 'blogpost',
     password: 'undefined',
-    port: 5432, // The default PostgreSQL port
+    port: 3001, // The default PostgreSQL port
 };
 
 const client = new Pool(connectionConfig);
