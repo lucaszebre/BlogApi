@@ -14,11 +14,12 @@ Blog Post API built using **NODE JS** and **SQL**. It follows a **RESTFul** desi
 
 | Methods | Endpoints                          | Access  | Description                              |
 | ------- | ---------------------------------- | ------- | ---------------------------------------- |
-| GET     | /user/[userId]                         | Private | User's Boards                         |
-| GET   | /user/[userId]/boards/[boardId]                          | Private | Get one board                           |
-| POST    | /user/[userId]                   | Private |  Create a Board                   |
-| DELETE    | /user/[userId]/boards/[boardId]             | Private | Delete  one board                      |
-| GET | /user/[userId]/boards/[boardsId]/columns/[columnId]                   | Private | get one column 
+| GET     | /user/[userId]                         | Private | get user table                         |
+ POST     | /user                         | Private | create user row                         | PUT     | /user/[userId]                         | Private | update the user info                        |DELETE     | /user/[userId]                         | Private | delete the user info                        |
+| GET   | /user/[userId]/post/[postId]                          | Private | Get one post                           |
+| POST    | /user/[userId]/posts                  | Private |  Create a post                  |
+| DELETE    | /user/[userId]/posts/[postId]             | Private | Delete  one post                     |
+| PUT | /user/[userId]/posts/[postId]                   | Private | update the post  
 | PUT | /user/[userId]/boards/[boardsId]/columns/[columnId]/tasks/[taskId]                   | Private | update one task 
 | POST | /user/[userId]/boards/[boardsId]/columns/[columnId]                  | Private | create one task
 | DELETE  | /user/[userId]/boards/[boardsId]/columns/[columnId]/tasks/[taskId]                          | Private | Delete one task                            
