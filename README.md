@@ -24,7 +24,7 @@ Blog Post API built using **NODE JS** and **SQL**. It follows a **RESTFul** desi
 | GET | /user/[userId]/comments/[commentId]                  | Private | get a current comment
 | DELETE  | /user/[userId]/comments/[commentId]                         | Private | Delete the current comment |
 POST | /tags                   | Private | create a tag  
-| GET | /tags/[tagId]              | Private | get all post correspondant to the tag
+| GET | /tags/[tagId]              | Public | get all post correspondant to the tag
 | DELETE  | /user/[tagsId]                        | Private | Delete the tag 
 | PUT  | /user/[tagsId]                        | Private | update a tag 
 
