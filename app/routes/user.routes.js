@@ -4,6 +4,6 @@ module.exports = function(app) {
     app.get('/user/:userId',controller.getUserById);
     app.put('/user/:userId',controller.updateUser);
     app.post('/user',controller.createUser);
-    // app.delete('/user/:userId/boards/:boardId',controller.deleteBoard);
+    app.delete('/user/:userId',controller.deleteUser);
 
 }

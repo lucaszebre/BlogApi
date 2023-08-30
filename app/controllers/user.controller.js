@@ -60,6 +60,17 @@ exports.createUser = (req, res) => {
             res.status(200).json(results.rows);
         });
     };
+
+    exports.deleteUser = (req, res) => {
+        const id = parseInt(req.params.userId);
+        
+        pool.query('DELETE FROM users WHERE id = $1', [id], (error, results) => {
+            if (error) {
+                throw error;
+            }
+            res.status(200).send(`User with ID ${id} has been deleted.`);
+        });
+    };
     
 
     
