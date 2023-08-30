@@ -1,9 +1,8 @@
 const express = require("express");
 const app = express();
 const port = 3000;
-const Pool = require('pg').Pool
 const  dotenv = require('dotenv');
-
+const pool = require('./app/config/db.js')
 app.use(express.json());
 app.use(
   express.urlencoded({
@@ -13,26 +12,15 @@ app.use(
 dotenv.config();
 const { POSTGRESQL_PASSWORD } = process.env;
 
-const connectionConfig = {
-    user: 'postgres',
-    host: 'localhost',
-    database: 'blogpost',
-    password: 'undefined',
-    port: 3001, // The default PostgreSQL port
-};
 
-const client = new Pool(connectionConfig);
 
 async function connectAndQuery() {
     try {
-        await client.connect();
+        await pool.connect();
         console.log('Connected to PostgreSQL');
     } catch (error) {
         console.error('Error:', error.message);
-    } finally {
-        await client.end();
-        console.log('Connection to PostgreSQL closed');
-    }
+    } 
 }
 
 connectAndQuery();
@@ -40,6 +28,8 @@ connectAndQuery();
 app.get("/", (req, res) => {
   res.json({ message: "ok" });
 });
+require("./app/routes/user.routes")(app);
+
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
 });
