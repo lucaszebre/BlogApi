@@ -19,10 +19,14 @@ Blog Post API built using **NODE JS** and **SQL**. It follows a **RESTFul** desi
 | GET   | /user/[userId]/post/[postId]                          | Private | Get one post                           |
 | POST    | /user/[userId]/posts                  | Private |  Create a post                  |
 | DELETE    | /user/[userId]/posts/[postId]             | Private | Delete  one post                     |
-| PUT | /user/[userId]/posts/[postId]                   | Private | update the post  
-| PUT | /user/[userId]/boards/[boardsId]/columns/[columnId]/tasks/[taskId]                   | Private | update one task 
-| POST | /user/[userId]/boards/[boardsId]/columns/[columnId]                  | Private | create one task
-| DELETE  | /user/[userId]/boards/[boardsId]/columns/[columnId]/tasks/[taskId]                          | Private | Delete one task                            
+| POST | /user/[userId]/comments                   | Private | create a comment  
+| PUT | /user/[userId]/comments/[commentId]                  | Private | update a comment 
+| GET | /user/[userId]/comments/[commentId]                  | Private | get a current comment
+| DELETE  | /user/[userId]/comments/[commentId]                         | Private | Delete the current comment |
+POST | /tags                   | Private | create a tag  
+| GET | /tags/[tagId]              | Private | get all post correspondant to the tag
+| DELETE  | /user/[tagsId]                        | Private | Delete the tag 
+| PUT  | /user/[tagsId]                        | Private | update a tag 
 
 ## Hosted Domain Link
 
