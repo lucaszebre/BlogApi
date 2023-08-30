@@ -7,8 +7,8 @@ Blog Post API built using **NODE JS** and **SQL**. It follows a **RESTFul** desi
 - Create a article 
 - Update a article
 - Delete a article
-- Auth as a admin / Logout as a admin 
-- Auth as a visitor / comment the post 
+- Auth as a admin / Logout as a admin super role , delete comment , modified article , delete article 
+- Auth as a visitor / comment the post , write article 
 
 ## API Endpoints
 
@@ -25,8 +25,8 @@ Blog Post API built using **NODE JS** and **SQL**. It follows a **RESTFul** desi
 | DELETE  | /user/[userId]/comments/[commentId]                         | Private | Delete the current comment |
 POST | /tags                   | Private | create a tag  
 | GET | /tags/[tagId]              | Public | get all post correspondant to the tag
-| DELETE  | /user/[tagsId]                        | Private | Delete the tag 
-| PUT  | /user/[tagsId]                        | Private | update a tag 
+| DELETE  | /tags/[tagsId]                        | Private | Delete the tag 
+| PUT  | /tags/[tagsId]                        | Private | update a tag 
 
 ## Hosted Domain Link
 
