@@ -1,13 +1,13 @@
-const pool = require('../config/db.js')
+const pool = require('../config/db.config.js')
 
 exports.getUserById = (req, res) => {
-    const id = parseInt(req.params.userId)
+    const { userId } = req.body
     
-        pool.query('SELECT * FROM users WHERE id = $1', [id], (error, results) => {
+        pool.query('SELECT * FROM users WHERE id = $1', [userId], (error, results) => {
         if (error) {
             throw error
         }
-        res.status(200).json(results.rows)
+        res.status(200).json(results)
         })
     }
 

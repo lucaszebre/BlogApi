@@ -1,0 +1,9 @@
+const controller = require("../controllers/auth.controller");
+const checkDuplicateEmail = require ('../middlewares/AlreadyRegister')
+const verifyToken = require ('../middlewares/isAuth')
+module.exports = function(app) {
+
+    app.post('/register',checkDuplicateEmail, controller.register);
+    app.post('/login',controller.login);
+
+}
