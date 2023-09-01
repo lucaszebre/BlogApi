@@ -1,11 +1,8 @@
+const passport = require("passport");
 const controller = require("../controllers/user.controller");
-const verifyToken = require ('../middlewares/isAuth')
-
 module.exports = function(app) {
 
-    app.get('/user/:userId',controller.getUserById);
-    app.put('/user/:userId',verifyToken,controller.updateUser);
-    app.post('/user', verifyToken,controller.createUser);
-    app.delete('/user/:userId',verifyToken,controller.deleteUser);
-
+    app.get('/user/:userId',passport.authenticate('jwt', { session: false }),controller.getUserById);
+    app.put('/user/:userId',passport.authenticate('jwt', { session: false }),controller.updateUser);
+    
 }

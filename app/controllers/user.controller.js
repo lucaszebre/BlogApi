@@ -7,20 +7,20 @@ exports.getUserById = (req, res) => {
         if (error) {
             throw error
         }
-        res.status(200).json(results)
+        res.status(200).json(results.rows)
         })
     }
 
-exports.createUser = (req, res) => {
-    const { username, email } = req.body
-    Id=1
-        pool.query('INSERT INTO users (username, email,Id) VALUES ($1, $2,$3) RETURNING *', [username, email,Id], (error, results) => {
-        if (error) {
-            throw error
-        }
-        res.status(201).send(`User added with ID: ${results.rows[0].id}`)
-        })
-    }
+// exports.createUser = (req, res) => {
+//     const { username, email } = req.body
+//     Id=1
+//         pool.query('INSERT INTO users (username, email,Id) VALUES ($1, $2,$3) RETURNING *', [username, email,Id], (error, results) => {
+//         if (error) {
+//             throw error
+//         }
+//         res.status(201).send(`User added with ID: ${results.rows[0].id}`)
+//         })
+//     }
     exports.updateUser = (req, res) => {
         const id = parseInt(req.params.userId);
         const { username, email } = req.body;
@@ -60,16 +60,16 @@ exports.createUser = (req, res) => {
         });
     };
 
-    exports.deleteUser = (req, res) => {
-        const id = parseInt(req.params.userId);
+    // exports.deleteUser = (req, res) => {
+    //     const id = parseInt(req.params.userId);
         
-        pool.query('DELETE FROM users WHERE id = $1', [id], (error, results) => {
-            if (error) {
-                throw error;
-            }
-            res.status(200).send(`User with ID ${id} has been deleted.`);
-        });
-    };
+    //     pool.query('DELETE FROM users WHERE id = $1', [id], (error, results) => {
+    //         if (error) {
+    //             throw error;
+    //         }
+    //         res.status(200).send(`User with ID ${id} has been deleted.`);
+    //     });
+    // };
     
 
     
