@@ -15,7 +15,7 @@ passport.use(
       pool.query('SELECT * FROM users WHERE username = $1', [jwt_payload.username], (error, results) => {
         if (error) {
             throw error
-        }else if(results.rows < 1){
+        }else if(results.rows ==0){
             return done(null, false);
         }
         return done(null, results.rows[0]);
