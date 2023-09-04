@@ -1,7 +1,7 @@
 const pool = require('../config/db.config.js')
 
 exports.getUserById = (req, res) => {
-    const { userId } = req.body
+    const userId = req.params.userId; // Assuming it's in the URL parameter
     
         pool.query('SELECT * FROM users WHERE id = $1', [userId], (error, results) => {
         if (error) {
@@ -22,7 +22,7 @@ exports.getUserById = (req, res) => {
 //         })
 //     }
     exports.updateUser = (req, res) => {
-        const id = parseInt(req.params.userId);
+        const id = req.params.userId;
         const { username, email } = req.body;
         
         // Check which fields to update

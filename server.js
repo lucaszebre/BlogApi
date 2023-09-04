@@ -1,5 +1,6 @@
 const express = require("express");
 const app = express();
+const cookieParser = require('cookie-parser');
 const port = 3000;
 const  dotenv = require('dotenv');
 const cors = require("cors");
@@ -18,6 +19,7 @@ var corsOptions = {
 };
 
 app.use(cors(corsOptions));
+app.use(cookieParser());
 
 async function connectAndQuery() {
     try {

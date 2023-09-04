@@ -1,7 +1,5 @@
 const pool = require('../config/db.config.js')
 const uuid = require('uuid')
-const config = require('../config/auth.config.js')
-const crypto = require('crypto')
 const { authentication, random } = require('../helpers')
 
 // Registration
@@ -11,12 +9,12 @@ exports.register = async (req, res) => {
 
     // check if the username , email , password is present 
     if(!username||!email||!password){
-        return res.sendStatus(400)
+        return res.sendStatus(400).json({message:'miss parameter'})
     }
 
     // check if the user is already register
     pool.query('SELECT * FROM users WHERE email = $1', [email], (error, results) => {
-        if (results.rowCount > 0) {
+        if (results.rowCount  >0) {
             return res.sendStatus(400).json({message:'user already register'})
         }
         })
@@ -39,7 +37,6 @@ exports.register = async (req, res) => {
 // Login
 exports.login = async (req, res) => {
     const {  email , password } = req.body;
-    const refreshToken = crypto.randomBytes(64).toString('hex');
 
     // check if the email and password is present 
     if(!email||!password){
