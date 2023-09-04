@@ -1,9 +1,11 @@
-import crypto from 'crypto';
+const  crypto = require('crypto');
 
 const SECRET = 'LUCAS-REST-API';
 
-export const authentication = (salt, password) => {
+ const authentication = (salt, password) => {
     return crypto.createHmac('sha256', [salt, password].join('/')).update(SECRET).digest('hex');
 }
 
-export const random = () => crypto.randomBytes(128).toString('base64');
+ const random = () => crypto.randomBytes(128).toString('base64');
+
+module.exports = {authentication,random}

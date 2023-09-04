@@ -11,8 +11,6 @@ app.use(
   })
 );
 
-const passport = require('passport');
-require('./app/passport-config')(passport);
 dotenv.config();
 const { POSTGRESQL_PASSWORD } = process.env;
 var corsOptions = {
@@ -33,7 +31,6 @@ async function connectAndQuery() {
 connectAndQuery();
 // auth router attaches /login, /logout, and /callback routes to the baseURL
 
-app.use(passport.initialize());
 require("./app/routes/auth.routes.js")(app);
 
 require("./app/routes/user.routes.js")(app);
