@@ -83,38 +83,23 @@ exports.login = async (req, res) => {
 };
 
 exports.logout = async (req, res) => {
-    const { refreshToken } = req.body;
-    try {
-        pool.query('SELECT * FROM users WHERE refreshToken = $1', [refreshToken], (error, results) => {
-            if (results.rowCount > 0) {
-                return res.status(403).json({ message: "Invalid refresh token" });
-            }else{
-                pool.query('UPDATE users SET refreshToken = $1 WHERE id = $2 RETURNING *', [null,results.rows[0].id], (error, results) => {
-                    if (error) {
-                        throw error
-                    }
-                    })
-            }
-            })
-    } catch (error) {
-        console.error(error)
-    }
+    const { userId } = req.body;
+   // Clear the session token from the cookie
+   res.clearCookie('LUCAS-AUTH', { domain: 'localhost', path: '/' });
+    
+
+   try {
+       pool.query('UPDATE users SET sessionToken = NULL WHERE id = $1', [userId], (error, results) => {
+           if (error) {
+               throw error;
+           }
+           // Optionally, you can handle the success response here
+           res.status(200).json({ message: 'Logout successful' });
+       });
+   } catch (error) {
+       // Handle any errors that occur during the database update
+       res.status(500).json({ message: 'Error logging out' });
+   }
 };
 
-// exports.Refresh = async (req, res) =>{
-//     const { refreshToken } = req.body;
-//     pool.query('SELECT * FROM users WHERE refresToken = $1', [refreshToken], (error, results) => {
-//         if (results.rowCount > 0) {
-//             return res.status(403).json({ message: "Invalid refresh token" });
-//             return;
-//         }else{
-//             const newToken = jwt.sign(
-//                 { username: user.username },
-//                 process.env.JWT_SECRET,
-//                 { expiresIn: "1h" }
-//             );
-//             res.json({ message: "New access token generated", token: newToken });
-//         }
-//         })
-    
-// }
+
