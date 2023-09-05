@@ -32,7 +32,7 @@ POST | /user/[userId]/post/[postId]/comment                  | Private | create 
 
 ## Hosted Domain Link
 
-[Blog Post API]()
+[Blog Post API](https://blogapi-2qgo.onrender.com)
 
 
 
