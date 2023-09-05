@@ -1,4 +1,5 @@
-![BlogPostDataModel](https://github.com/lucaszebre/BlogApi/assets/76404328/7413a955-a59f-44f1-bf56-eacccf9c98f2)# Blog Post RESTFul-API
+#![BlogPostDataModel](https://github.com/lucaszebre/BlogApi/assets/76404328/96a37a0a-eb36-4020-bc77-2ad1fcee05f2)
+ Blog Post RESTFul-API
 
 Blog Post API built using **NODE JS** and **SQL**. It follows a **RESTFul** design architecture. It's richly built with a simple scientific technique and best practices in the world of **API** design.
 
