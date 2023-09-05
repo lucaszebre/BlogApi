@@ -35,6 +35,7 @@ connectAndQuery();
 
 require("./app/routes/auth.routes.js")(app);
 require("./app/routes/post.routes.js")(app);
+require("./app/routes/comments.routes.js")(app);
 
 require("./app/routes/user.routes.js")(app);
 
