@@ -40,5 +40,9 @@ require("./app/routes/comments.routes.js")(app);
 require("./app/routes/user.routes.js")(app);
 
 app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`);
+  console.log(`Server is running`);
+});
+
+app.get("/", (req, res) => {
+  res.json({ message: "Welcome to Blog APi by lucaszebre." });
 });
