@@ -28,7 +28,7 @@ Blog Post API built using **NODE JS** and **SQL**. It follows a **RESTFul** desi
 | DELETE  | /comments/[commentId]                         | Private | Delete the current comment |
 POST | /user/[userId]/post/[postId]/comment                  | Private | create a comment 
 | PUT | /comment/[commentId]              | PRIVATE | update the comment
-| DELETE  | /tags/[tagsId]                        
+                      
 
 ## Hosted Domain Link
 
