@@ -1,4 +1,3 @@
-const { date } = require('zod');
 const pool = require('../config/db.config.js')
 const uuid = require('uuid')
 
