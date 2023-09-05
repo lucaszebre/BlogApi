@@ -34,6 +34,7 @@ connectAndQuery();
 // auth router attaches /login, /logout, and /callback routes to the baseURL
 
 require("./app/routes/auth.routes.js")(app);
+require("./app/routes/post.routes.js")(app);
 
 require("./app/routes/user.routes.js")(app);
 

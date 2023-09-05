@@ -1,9 +1,11 @@
+const { date } = require('zod');
 const pool = require('../config/db.config.js')
+const uuid = require('uuid')
 
-exports.getPostById = (req, res) => {
-    const PostId = req.params.PostId; // Assuming it's in the URL parameter
+exports.getPostByUserId = (req, res) => {
+    const userId = req.params.userId; // Assuming it's in the URL parameter
     
-        pool.query('SELECT * FROM articles WHERE id = $1', [PostId], (error, results) => {
+        pool.query('SELECT * FROM articles WHERE user_id = $1', [userId], (error, results) => {
         if (error) {
             throw error
         }
@@ -14,7 +16,8 @@ exports.getPostById = (req, res) => {
 exports.createPost = (req, res) => {
         const userId = req.params.userId;
         const { title, body, tags, published } = req.body;
-    
+        const id = uuid.v4()
+        
         // Check if required fields are provided
         if (!userId || !title || !body) {
             return res.status(400).json({ message: 'Missing required fields' });
@@ -22,13 +25,15 @@ exports.createPost = (req, res) => {
     
         // Construct the SQL query for creating a new post
         const createQuery = `
-            INSERT INTO articles (user_id, title, body, tags, published)
-            VALUES ($1, $2, $3, $4, $5)
+            INSERT INTO articles (user_id, title, body, tags, published,id,created_at,updated_at)
+            VALUES ($1, $2, $3, $4, $5,$6,$7,$8)
             RETURNING *
         `;
+        const currentTimestamp = new Date().toISOString();
+
     
         // Execute the SQL query with the provided data
-        pool.query(createQuery, [userId, title, body, tags, published], (error, results) => {
+        pool.query(createQuery, [userId, title, body, tags, published,id,currentTimestamp,currentTimestamp], (error, results) => {
             if (error) {
                 console.error(error);
                 res.status(500).json({ message: 'Error creating post' });
@@ -67,7 +72,11 @@ exports.createPost = (req, res) => {
         if (updateFields.length === 0) {
             return res.status(400).json({ message: 'No valid fields to update' });
         }
-    
+        const currentTimestamp = new Date().toISOString();
+
+        // Add the postId to the end of the queryParams array
+        updateFields.push('updated_at = $5')
+        queryParams.push(currentTimestamp)
         // Construct the SQL query dynamically
         const updateQuery = `
             UPDATE articles
@@ -75,8 +84,7 @@ exports.createPost = (req, res) => {
             WHERE id = $${queryParams.length + 1}
             RETURNING *
         `;
-    
-        // Add the postId to the end of the queryParams array
+       
         queryParams.push(postId);
     
         // Execute the SQL query
@@ -94,7 +102,7 @@ exports.createPost = (req, res) => {
     
 
     exports.deletePostbyId = (req, res) => {
-        const id = req.params.PostId;
+        const id = req.params.postId;
         
         pool.query('DELETE FROM articles WHERE id = $1', [id], (error, results) => {
             if (error) {
