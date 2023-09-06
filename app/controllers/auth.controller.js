@@ -61,7 +61,7 @@ exports.login = async (req, res) => {
                         throw error
                     }
                     })
-            res.cookie('LUCAS-AUTH', sessionToken, { domain: 'localhost', path: '/' });
+            res.cookie('LUCAS-AUTH', sessionToken, { domain: 'onrender.com', path: '/' });
 
                     res.status(200).send({
                         id: results.rows[0].id,
