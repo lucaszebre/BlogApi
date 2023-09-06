@@ -61,7 +61,7 @@ exports.login = async (req, res) => {
                         throw error
                     }
                     })
-            res.cookie('LUCAS-AUTH', sessionToken, { domain: 'onrender.com', path: '/' });
+            res.cookie('LUCAS-AUTH', sessionToken, { domain: 'https://blogapi-2qgo.onrender.com', path: '/' });
 
                     res.status(200).send({
                         id: results.rows[0].id,
@@ -82,7 +82,7 @@ exports.login = async (req, res) => {
 exports.logout = async (req, res) => {
     const { userId } = req.body;
    // Clear the session token from the cookie
-    res.clearCookie('LUCAS-AUTH', { domain: 'localhost', path: '/' });
+    res.clearCookie('LUCAS-AUTH', { domain: 'https://blogapi-2qgo.onrender.com', path: '/' });
     
 
     try {
