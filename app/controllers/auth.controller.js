@@ -61,7 +61,7 @@ exports.login = async (req, res) => {
                         throw error
                     }
                     })
-            res.cookie('LUCAS-AUTH', sessionToken, { domain: 'https://blogapi-2qgo.onrender.com', path: '/' });
+            res.cookie('LUCAS-AUTH', sessionToken, { httpOnly: true, sameSite: "none", secure: true });
 
                     res.status(200).send({
                         id: results.rows[0].id,
