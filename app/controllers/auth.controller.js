@@ -82,7 +82,7 @@ exports.login = async (req, res) => {
 exports.logout = async (req, res) => {
     const { userId } = req.body;
    // Clear the session token from the cookie
-    res.clearCookie('LUCAS-AUTH', { domain: 'https://blogapi-2qgo.onrender.com', path: '/' });
+    res.clearCookie('LUCAS-AUTH', { httpOnly: true, sameSite: "none", secure: true });
     
 
     try {
